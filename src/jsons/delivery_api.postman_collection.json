@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "46b3a0a6-65b3-4ae5-a743-8c7fd3694c29",
+		"name": "delivery_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET users REVER",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk1MDY2NDZmLTA1NDYtNGExOC05ZTBlLTZiYWY5ODg4ZTEyMiIsImlhdCI6MTYwNTM5MjcxMiwiZXhwIjoxNjA1NDEwNzEyfQ._LZE4WDYFZQifUE-O9-Fbro2MGu3mT3DTtCuab-HZaM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST user tela login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"felipe\",\n    \"email\": \"felipe@user.com\",\n    \"password\": \"Felipe25@0\",\n    \"passwordConfirmation\": \"Felipe25@0\",\n    \"role\": \"ADMIN\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"felipe@user.com\",\n    \"password\": \"Felipe25@0\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET auth user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA4ZmUxYWU0LTU0NTAtNGQyOS1hYmE1LWJjNjY0NWE4ODYyYiIsImlhdCI6MTYwNTQ1ODc2MSwiZXhwIjoxNjA1NDc2NzYxfQ.D562Rgao1HJg1UOI7UPo7GnEj-eNrb27vy0FkYJJkJo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/auth/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"auth",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk3OThmOTU3LTFkOWItNGQ3My05NjEwLWM4NTljYzEwZThjZCIsImlhdCI6MTYwNTQ2MDg2NCwiZXhwIjoxNjA1NDc4ODY0fQ.wKdUnE5_M8h8pjJAgg-N1paX1NCwkICnTOVj4Uj0EG8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"moraes\",\n    \"email\": \"moraes@user.com\",\n    \"password\": \"Felipe25@0\",\n    \"passwordConfirmation\": \"Felipe25@0\",\n    \"role\": \"ADMIN\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET user BY ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA4ZmUxYWU0LTU0NTAtNGQyOS1hYmE1LWJjNjY0NWE4ODYyYiIsImlhdCI6MTYwNTQ1NDA1MiwiZXhwIjoxNjA1NDcyMDUyfQ.yxEXmKC7ODAyAVuD57JdmWaftHRMeTaVBwA9P8Oo8M4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/users/08fe1ae4-5450-4d29-aba5-bc6645a8862b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"users",
+						"08fe1ae4-5450-4d29-aba5-bc6645a8862b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk1MDY2NDZmLTA1NDYtNGExOC05ZTBlLTZiYWY5ODg4ZTEyMiIsImlhdCI6MTYwNTM5MTQ4MSwiZXhwIjoxNjA1NDA5NDgxfQ.k4LdgGKuAw0WsWmOMfLgqwepB7v5e8zdd1uT9aDamXs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"bruno@user.com\",\n    \"name\": \"bruno222\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/users/8f803dcc-87f4-4c1c-b331-f09fb06d614c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"users",
+						"8f803dcc-87f4-4c1c-b331-f09fb06d614c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk1MDY2NDZmLTA1NDYtNGExOC05ZTBlLTZiYWY5ODg4ZTEyMiIsImlhdCI6MTYwNTM5MTQ4MSwiZXhwIjoxNjA1NDA5NDgxfQ.k4LdgGKuAw0WsWmOMfLgqwepB7v5e8zdd1uT9aDamXs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3003/users/8f803dcc-87f4-4c1c-b331-f09fb06d614c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"users",
+						"8f803dcc-87f4-4c1c-b331-f09fb06d614c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGOUT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA4ZmUxYWU0LTU0NTAtNGQyOS1hYmE1LWJjNjY0NWE4ODYyYiIsImlhdCI6MTYwNTQ1NDA1MiwiZXhwIjoxNjA1NDcyMDUyfQ.yxEXmKC7ODAyAVuD57JdmWaftHRMeTaVBwA9P8Oo8M4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"08fe1ae4-5450-4d29-aba5-bc6645a8862b\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3003/users/me/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3003",
+					"path": [
+						"users",
+						"me",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

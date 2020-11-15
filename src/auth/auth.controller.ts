@@ -5,8 +5,6 @@ import {
   ValidationPipe,
   Get,
   UseGuards,
-  Patch,
-  InternalServerErrorException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from '../users/dto/create-user.dto';
@@ -14,8 +12,6 @@ import { CredentialsDto } from './dto/credentials.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from '../users/user.entity';
 import { GetUser } from './get-user.decorator';
-import { UsersService } from '../users/users.service';
-
 
 @Controller('auth')
 export class AuthController {

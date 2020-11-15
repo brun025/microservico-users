@@ -52,4 +52,6 @@ export class CreateUserDto {
       'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número ou um símbulo',
   })
   passwordConfirmation: string;
+
+  role: string;
 }
