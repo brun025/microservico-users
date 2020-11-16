@@ -8,7 +8,6 @@ import {
   Param,
   Patch,
   ForbiddenException,
-  InternalServerErrorException,
   Delete,
   Query,
 } from '@nestjs/common';

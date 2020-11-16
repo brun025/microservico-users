@@ -38,7 +38,20 @@ export class UserRepository extends Repository<User> {
     // query.skip((queryDto.page - 1) * queryDto.limit);
     // query.take(+queryDto.limit);
     query.orderBy(queryDto.sort ? JSON.parse(queryDto.sort) : undefined);
-    query.select(['user.name', 'user.email', 'user.role', 'user.status']);
+    query.select(['user.id', 'user.name', 'user.email', 'user.role', 'user.status']);
+
+    const [users, total] = await query.getManyAndCount();
+
+    return { users, total };
+  }
+
+  async findDrivers(
+    queryDto: FindUsersQueryDto,
+  ): Promise<{ users: User[]; total: number }> {
+    const role = 'USER';
+    const query = this.createQueryBuilder('user');
+    query.where('user.role = :role', { role });
+    query.select(['user.id', 'user.name', 'user.email', 'user.role', 'user.status']);
 
     const [users, total] = await query.getManyAndCount();
 

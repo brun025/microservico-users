@@ -8,7 +8,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UserRepository } from './users.repository';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './user.entity';
-import { UserRole } from './user-roles.enum';
+// import { UserRole } from './user-roles.enum';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { FindUsersQueryDto } from './dto/find-users-query-dto';
 
@@ -67,6 +67,13 @@ export class UsersService {
     queryDto: FindUsersQueryDto,
   ): Promise<{ users: User[]; total: number }> {
     const users = await this.userRepository.findUsers(queryDto);
+    return users;
+  }
+
+  async findDrivers(
+    queryDto: FindUsersQueryDto,
+  ): Promise<{ users: User[]; total: number }> {
+    const users = await this.userRepository.findDrivers(queryDto);
     return users;
   }
 }

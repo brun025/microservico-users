@@ -5,6 +5,7 @@ import {
   ValidationPipe,
   Get,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { CreateUserDto } from '../users/dto/create-user.dto';
@@ -12,10 +13,13 @@ import { CredentialsDto } from './dto/credentials.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from '../users/user.entity';
 import { GetUser } from './get-user.decorator';
+import { FindUsersQueryDto } from '../users/dto/find-users-query-dto';
+import { UsersService } from '../users/users.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+              private usersService: UsersService) {}
 
   @Post('/signup')
   async signUp(
@@ -38,5 +42,14 @@ export class AuthController {
   @UseGuards(AuthGuard())
   getMe(@GetUser() user: User): User {
     return user;
+  }
+
+  @Get('/drivers')
+  async findDrivers(@Query() query: FindUsersQueryDto) {
+    const found = await this.usersService.findDrivers(query);
+    return {
+      found,
+      message: 'Motoristas encontrados',
+    };
   }
 }
