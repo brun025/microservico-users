@@ -13,28 +13,10 @@ export class ProductRepository extends Repository<Product> {
   async findProducts(
     queryDto: FindProductsQueryDto,
   ): Promise<{ products: Product[]; total: number }> {
-    queryDto.page = queryDto.page < 1 ? 1 : queryDto.page;
-    queryDto.limit = queryDto.limit > 100 ? 100 : queryDto.limit;
-
     const { price, name, description } = queryDto;
     const query = this.createQueryBuilder('product');
-    query.where('product.status = :status', { status });
 
-    // if (email) {
-    //   query.andWhere('product.email ILIKE :email', { email: `%${email}%` });
-    // }
-
-    if (name) {
-      query.andWhere('product.name ILIKE :name', { name: `%${name}%` });
-    }
-
-    // if (role) {
-    //   query.andWhere('product.role = :role', { role });
-    // }
-    // query.skip((queryDto.page - 1) * queryDto.limit);
-    // query.take(+queryDto.limit);
-    query.orderBy(queryDto.sort ? JSON.parse(queryDto.sort) : undefined);
-    query.select(['product.id', 'product.name', 'product.email', 'product.role', 'product.status']);
+    query.select(['product.id', 'product.name', 'product.price', 'product.description']);
 
     const [products, total] = await query.getManyAndCount();
 

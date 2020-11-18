@@ -18,7 +18,7 @@ export class ProductsService {
     private productRepository: ProductRepository,
   ) {}
 
-  async createAdminProduct(createProductDto: CreateProductDto): Promise<Product> {
+  async createProduct(createProductDto: CreateProductDto): Promise<Product> {
       return this.productRepository.createProduct(createProductDto);
   }
 
