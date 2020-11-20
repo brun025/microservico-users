@@ -22,12 +22,12 @@ import { Product } from './product.entity';
 import { FindProductsQueryDto } from './dto/find-products-query-dto';
 
 @Controller('products')
-@UseGuards(AuthGuard(), RolesGuard)
+// @UseGuards(AuthGuard(), RolesGuard)
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
   @Post()
-  @Role(UserRole.ADMIN)
+  // @Role(UserRole.ADMIN)
   async createProduct(
     @Body(ValidationPipe) createProductDto: CreateProductDto,
   ): Promise<ReturnProductDto> {
@@ -39,7 +39,7 @@ export class ProductsController {
   }
 
   @Get(':id')
-  @Role(UserRole.ADMIN)
+  // @Role(UserRole.ADMIN)
   async findProductById(@Param('id') id): Promise<ReturnProductDto> {
     const product = await this.productsService.findProductById(id);
     return {
@@ -49,7 +49,7 @@ export class ProductsController {
   }
 
   @Patch(':id')
-  @Role(UserRole.ADMIN)
+  // @Role(UserRole.ADMIN)
   async updateProduct(
     @Body(ValidationPipe) updateProductDto: UpdateProductDto,
     @Param('id') id: string,
@@ -58,7 +58,7 @@ export class ProductsController {
     }
 
   @Delete(':id')
-  @Role(UserRole.ADMIN)
+  // @Role(UserRole.ADMIN)
   async deleteProduct(@Param('id') id: string) {
     await this.productsService.deleteProduct(id);
     return {
@@ -67,7 +67,7 @@ export class ProductsController {
   }
 
   @Get()
-  @Role(UserRole.ADMIN)
+  // @Role(UserRole.ADMIN)
   async findProducts(@Query() query: FindProductsQueryDto) {
     const found = await this.productsService.findProducts(query);
     return {
