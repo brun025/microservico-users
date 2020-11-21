@@ -24,12 +24,12 @@ import { GetUser } from '../auth/get-user.decorator';
 import { FindUsersQueryDto } from './dto/find-users-query-dto';
 
 @Controller('users')
-@UseGuards(AuthGuard(), RolesGuard)
+// @UseGuards(AuthGuard(), RolesGuard)
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Post()
-  @Role(UserRole.ADMIN)
+  // @Role(UserRole.ADMIN)
   async createAdminUser(
     @Body(ValidationPipe) createUserDto: CreateUserDto,
   ): Promise<ReturnUserDto> {
@@ -41,7 +41,7 @@ export class UsersController {
   }
 
   @Get(':id')
-  @Role(UserRole.ADMIN)
+  // @Role(UserRole.ADMIN)
   async findUserById(@Param('id') id): Promise<ReturnUserDto> {
     const user = await this.usersService.findUserById(id);
     return {
@@ -53,20 +53,20 @@ export class UsersController {
   @Patch(':id')
   async updateUser(
     @Body(ValidationPipe) updateUserDto: UpdateUserDto,
-    @GetUser() user: User,
+    // @GetUser() user: User,
     @Param('id') id: string,
   ) {
-    if (user.role != UserRole.ADMIN && user.id.toString() != id) {
-      throw new ForbiddenException(
-        'Você não tem autorização para acessar esse recurso',
-      );
-    } else {
+    // if (user.role != UserRole.ADMIN && user.id.toString() != id) {
+    //   throw new ForbiddenException(
+    //     'Você não tem autorização para acessar esse recurso',
+    //   );
+    // } else {
       return this.usersService.updateUser(updateUserDto, id);
-    }
+    // }
   }
 
   @Delete(':id')
-  @Role(UserRole.ADMIN)
+  // @Role(UserRole.ADMIN)
   async deleteUser(@Param('id') id: string) {
     await this.usersService.deleteUser(id);
     return {
@@ -75,7 +75,7 @@ export class UsersController {
   }
 
   @Get()
-  @Role(UserRole.ADMIN)
+  // @Role(UserRole.ADMIN)
   async findUsers(@Query() query: FindUsersQueryDto) {
     const found = await this.usersService.findUsers(query);
     return {
@@ -83,22 +83,4 @@ export class UsersController {
       message: 'Usuários encontrados',
     };
   }
-
-  // @Patch('/me/logout')
-  // @UseGuards(AuthGuard())
-  // async logout(
-  //   @Body() req: any
-  // ) {
-  //     // console.log(req.id);
-  //     const user = await this.usersService.findUserById(req.id);
-  //     user.confirmationToken = null;
-  //     try {
-  //       await user.save();
-  //       return {message: "Token invalidado com sucesso"};
-  //     } catch (error) {
-  //       throw new InternalServerErrorException(
-  //         'Erro ao sair do sistema',
-  //       );
-  //     }
-  // }
 }
