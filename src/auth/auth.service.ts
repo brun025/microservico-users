@@ -31,7 +31,8 @@ export class AuthService {
     const user = await this.userRepository.checkCredentials(credentialsDto);
 
     if (user === null) {
-      throw new UnauthorizedException('Credenciais inválidas');
+      return { data: {"message": "Credenciais inválidas"} };
+      // throw new UnauthorizedException('Credenciais inválidas');
     }
 
     const jwtPayload = {
@@ -39,6 +40,6 @@ export class AuthService {
     };
     const token = await this.jwtService.sign(jwtPayload);
 
-    return { token };
+    return { data: {"user": user, "token": token} };
   }
 }
